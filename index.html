@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Czy będziesz moją walentynką? 💖</title>
+    <style>
+
+        @keyframes float {
+    from { background-position: 0 0; }
+    to { background-position: 0 200px; }
+}
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e96390;
+    background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50'>\
+<text x='10' y='35' font-size='28'>💗</text>\
+</svg>");
+    background-repeat: repeat;
+    animation: float 20s linear infinite;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            width: 350px;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 200px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+
+        .buttons {
+            
+            position: relative;
+            height: 80px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            
+        }
+
+        #yes {
+            position: absolute;
+            left: 20px;
+            background: #ff4d6d;
+            color: white;
+        }
+
+        #yes:hover {
+            transform: scale(1.1);
+        }
+
+        #no {
+            background: #adb5bd;
+            color: white;
+            position: absolute;
+            left: 200px;
+            top: 0;
+            transition: left 0.25s ease, top 0.25s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>💘 Będziesz moją walentynką? 💘</h1>
+
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeng1NjNzOHZhd2RtNHhrdXRjdHg5eXFrOXl5NW8wNmRzd2oyNjkydSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/901mxGLGQN2PyCQpoc/giphy.gif" alt="cute cat">
+
+    <div class="buttons">
+        <button id="yes">TAK 💖</button>
+        <button id="no">NIE 🙃</button>
+    </div>
+</div>
+
+<script>
+    const noButton = document.getElementById("no");
+    const card = document.querySelector(".card");
+
+    noButton.addEventListener("mouseover", () => {
+        const cardRect = card.getBoundingClientRect();
+        const maxX = cardRect.width - noButton.offsetWidth;
+        const maxY = cardRect.height - noButton.offsetHeight;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noButton.style.left = x + "px";
+        noButton.style.top = y + "px";
+    });
+    noButton.addEventListener("click", () => {
+    noButton.style.opacity = "0";
+    noButton.style.transform += " scale(0.5)";
+
+    setTimeout(() => {
+        noButton.style.display = "none";
+    }, 300);
+});
+
+
+    document.getElementById("yes").addEventListener("click", () => {
+        document.body.innerHTML = `
+            <div style="
+                height:100vh;
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                justify-content:center;
+                background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+                font-family:'Segoe UI', sans-serif;
+                color:white;
+                text-align:center;">
+                <h1>Wiedziałem że tak 🥰💖</h1>
+                <p style="font-size:20px;">💕Dziękuję Pati💕</p>
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXVpbW1oa3Zlb3R1bG9sZTkweXU4N3VyMmkxbHNlYTJvd2Zia2VndyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1JmGiBtqTuehfYxuy9/giphy.gif" width="250">
+            </div>
+        `;
+    });
+</script>
+
+</body>
+</html>
