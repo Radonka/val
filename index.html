@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>POWAGA</title>
+    <title>Czy będziesz moją walentynką? 💖</title>
     <style>
 
         @keyframes float {
@@ -75,8 +75,10 @@
             position: absolute;
             left: 200px;
             top: 0;
-            transition: left 0.25s ease, top 0.25s ease;
+            transition: transform 0.35s cubic-bezier(.2,.9,.3,1.2), opacity 0.3s ease;
+        opacity 0.3s ease;
         }
+        
     </style>
 </head>
 <body>
@@ -96,17 +98,21 @@
     const noButton = document.getElementById("no");
     const card = document.querySelector(".card");
 
-    noButton.addEventListener("mouseover", () => {
-        const cardRect = card.getBoundingClientRect();
-        const maxX = cardRect.width - noButton.offsetWidth;
-        const maxY = cardRect.height - noButton.offsetHeight;
+    function moveNoButton() {
+    const container = document.querySelector(".buttons");
+    const rect = container.getBoundingClientRect();
 
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
+    const maxX = rect.width - noButton.offsetWidth;
+    const maxY = rect.height - noButton.offsetHeight;
 
-        noButton.style.left = x + "px";
-        noButton.style.top = y + "px";
-    });
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noButton.style.transform = `translate(${x}px, ${y}px)`;
+}
+noButton.addEventListener("touchstart", moveNoButton);
+noButton.addEventListener("mouseenter", moveNoButton);
+
     noButton.addEventListener("click", () => {
     noButton.style.opacity = "0";
     noButton.style.transform += " scale(0.5)";
@@ -130,7 +136,7 @@
                 color:white;
                 text-align:center;">
                 <h1>Wiedziałem że tak 🥰💖</h1>
-                <p style="font-size:20px;">💕YAAAAY💕</p>
+                <p style="font-size:20px;">💕Dziękuję Pati💕</p>
                 <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXVpbW1oa3Zlb3R1bG9sZTkweXU4N3VyMmkxbHNlYTJvd2Zia2VndyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1JmGiBtqTuehfYxuy9/giphy.gif" width="250">
             </div>
         `;
@@ -138,8 +144,8 @@
 </script>
 
 </body>
-
 </html>
+
 
 
 
